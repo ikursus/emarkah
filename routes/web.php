@@ -28,8 +28,17 @@ Route::get('dashboard', function () {
 
 # Route untuk paparkan senarai users
 Route::get('users', function () {
+
+    $data_users = [
+        ['id' => 1, 'nama' => 'Ali Baba', 'email' => 'ali@baba.com'],
+        ['id' => 2, 'nama' => 'Ahmad Albab', 'email' => 'ahmad@baba.com'],
+        ['id' => 3, 'nama' => 'Sammy Muthu', 'email' => 'sammy@baba.com'],
+        ['id' => 4, 'nama' => 'Lin Dan', 'email' => 'lindan@baba.com'],
+        ['id' => 5, 'nama' => 'John Doe', 'email' => 'john@baba.com']
+    ];
+
     # Beri respon paparkan template_index.php dari folder resources/views/users
-    return view('users.template_index');
+    return view('users.template_index', compact('data_users'));
 });
 
 # Route untuk tambah maklumat user
@@ -48,7 +57,7 @@ Route::post('users/add', function () {
 Route::get('users/{id}/edit', function ($id) {
     # Beri respon paparkan template_edit.php dari folder resources/views/users
     return view('users.template_edit');
-});
+})->name('users.edit');
 
 # Route untuk tambah maklumat user
 Route::patch('users/{id}/edit', function ($id) {
