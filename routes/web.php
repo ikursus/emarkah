@@ -1,0 +1,63 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('dashboard', function () {
+    # Bagi respon paparkan template_dashboard.php dari folder resources/views/user
+    # return view('user.template_dashboard');
+    return view('user/template_dashboard');
+});
+
+# Route untuk paparkan senarai users
+Route::get('users', function () {
+    # Beri respon paparkan template_index.php dari folder resources/views/users
+    return view('users.template_index');
+});
+
+# Route untuk tambah maklumat user
+Route::get('users/add', function () {
+    # Beri respon paparkan template_create.php dari folder resources/views/users
+    return view('users.template_create');
+});
+
+# Route untuk tambah maklumat user
+Route::post('users/add', function () {
+    # Dapatkan data dari borang template_create menerusi method POST
+    return 'Rekod berjaya ditambah!';
+});
+
+# Route untuk tambah maklumat user
+Route::get('users/{id}/edit', function ($id) {
+    # Beri respon paparkan template_edit.php dari folder resources/views/users
+    return view('users.template_edit');
+});
+
+# Route untuk tambah maklumat user
+Route::patch('users/{id}/edit', function ($id) {
+    # Dapatkan data dari borang template_edit menerusi method PATCH
+    return 'Rekod berjaya dikemaskini';
+});
+
+# Route untuk tambah maklumat user
+Route::delete('users/{id}', function ($id) {
+    # Hapuskan rekod dari database
+    return 'Rekod berjaya dihapuskan!';
+});
