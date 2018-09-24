@@ -39,19 +39,19 @@ Route::get('users', function () {
 
     # Beri respon paparkan template_index.php dari folder resources/views/users
     return view('users.template_index', compact('data_users'));
-});
+})->name('users.index');
 
 # Route untuk tambah maklumat user
 Route::get('users/add', function () {
     # Beri respon paparkan template_create.php dari folder resources/views/users
     return view('users.template_create');
-});
+})->name('users.create');
 
 # Route untuk tambah maklumat user
 Route::post('users/add', function () {
     # Dapatkan data dari borang template_create menerusi method POST
     return 'Rekod berjaya ditambah!';
-});
+})->name('users.store');
 
 # Route untuk tambah maklumat user
 Route::get('users/{id}/edit', function ($id) {
@@ -63,10 +63,10 @@ Route::get('users/{id}/edit', function ($id) {
 Route::patch('users/{id}/edit', function ($id) {
     # Dapatkan data dari borang template_edit menerusi method PATCH
     return 'Rekod berjaya dikemaskini';
-});
+})->name('users.update');
 
 # Route untuk tambah maklumat user
 Route::delete('users/{id}', function ($id) {
     # Hapuskan rekod dari database
     return 'Rekod berjaya dihapuskan!';
-});
+})->name('users.destroy');

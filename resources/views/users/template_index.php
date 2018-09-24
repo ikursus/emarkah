@@ -1,5 +1,5 @@
 <h1>Senarai Users</h1>
-<p>&nbsp;</p>
+<a href="<?php echo route('users.create'); ?>">Tambah User</a>
 
 <table style="height: 5px;" width="473">
     <thead>
