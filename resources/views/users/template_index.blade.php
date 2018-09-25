@@ -1,15 +1,26 @@
-{!! $page_title !!}
-{{ $page_title }}
+@extends('layouts/app')
 
-<a href="{{ route('users.create') }}">Tambah User</a>
 
-<table style="height: 5px;" width="473">
-    <thead>
+@section('content')
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+
+
+<a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
         <tr>
-        <th style="width: 111px;">ID</th>
-        <th style="width: 111px;">NAMA</th>
-        <th style="width: 111px;">EMAIL</th>
-        <th style="width: 112px;">TINDAKAN</th>
+        <th>ID</th>
+        <th>NAMA</th>
+        <th>EMAIL</th>
+        <th>TINDAKAN</th>
         </tr>
     </thead>
 <tbody>
@@ -18,8 +29,15 @@
         <th>{{ $user['id'] }}</th>
         <th>{{ $user['nama'] }}</th>
         <th>{{ $user['email'] }}</th>
-        <th><a href="{{ route('users.edit', $user['id']) }}">Edit</a></th>
+        <th><a href="{{ route('users.edit', $user['id']) }}" class="btn btn-sm btn-info">Edit</a></th>
         </tr>
         @endforeach
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+@endsection
