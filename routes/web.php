@@ -38,3 +38,17 @@ Route::get('users/{id}/edit', 'UsersController@edit')->name('users.edit');
 Route::patch('users/{id}/edit', 'UsersController@update')->name('users.update');
 # Route untuk tambah maklumat user
 Route::delete('users/{id}', 'UsersController@destroy')->name('users.destroy');
+
+
+# Route untuk paparkan senarai kursus
+Route::get('kursus', 'KursusController@index')->name('kursus.index');
+# Route untuk tambah maklumat kursus
+Route::get('kursus/add', 'KursusController@create')->name('kursus.create');
+# Route untuk tambah maklumat kursus
+Route::post('kursus/add', 'KursusController@store')->name('kursus.store');
+# Route untuk tambah maklumat kursus
+Route::get('kursus/{id}/edit', 'KursusController@edit')->name('kursus.edit');
+# Route untuk tambah maklumat kursus
+Route::patch('kursus/{id}/edit', 'KursusController@update')->name('kursus.update');
+# Route untuk tambah maklumat kursus
+Route::delete('kursus/{id}', 'KursusController@destroy')->name('kursus.destroy');

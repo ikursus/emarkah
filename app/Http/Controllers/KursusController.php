@@ -13,7 +13,14 @@ class KursusController extends Controller
      */
     public function index()
     {
-        //
+      $query = [
+          ['id' => 1, 'nama' => 'PHP Framework Laravel'],
+          ['id' => 2, 'nama' => 'Adobe Photoshop'],
+          ['id' => 3, 'nama' => 'Web Joomla'],
+      ];
+
+      # Beri respon paparkan template_index.php dari folder resources/views/users
+      return view('kursus.template_index', compact('query'));
     }
 
     /**
@@ -23,7 +30,8 @@ class KursusController extends Controller
      */
     public function create()
     {
-        //
+      # Beri respon paparkan template_create.php dari folder resources/views/users
+      return view('kursus.template_create');
     }
 
     /**
@@ -34,7 +42,15 @@ class KursusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'nama' => 'required|min:3'
+      ]);
+
+        $data = $request->all();
+
+        return $data;
+
+        # return 'Rekod berjaya ditambah!';
     }
 
     /**
@@ -56,7 +72,8 @@ class KursusController extends Controller
      */
     public function edit($id)
     {
-        //
+      # Beri respon paparkan template_edit.php dari folder resources/views/users
+      return view('kursus.template_edit');
     }
 
     /**
@@ -68,7 +85,13 @@ class KursusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'nama' => 'required|min:3'
+      ]);
+
+        $data = $request->all();
+
+        return redirect()->back()->with('alert-success', 'Rekod berjaya dikemaskini');
     }
 
     /**
@@ -79,6 +102,6 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route('kursus.index')->with('alert-success', 'Rekod berjaya dihapuskan');
     }
 }
