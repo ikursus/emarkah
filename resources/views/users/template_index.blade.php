@@ -1,4 +1,6 @@
-<h1>Senarai Users</h1>
+{!! $page_title !!}
+{{ $page_title }}
+
 <a href="{{ route('users.create') }}">Tambah User</a>
 
 <table style="height: 5px;" width="473">
