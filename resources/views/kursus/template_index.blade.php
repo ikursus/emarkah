@@ -40,6 +40,7 @@
 <form method="POST" action="{{ route('kursus.destroy', $item['id']) }}">
   @csrf
   @method('DELETE')
+
 <!-- Modal -->
 <div class="modal fade" id="modal-delete-{{ $item['id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
