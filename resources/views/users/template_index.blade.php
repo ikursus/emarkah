@@ -6,12 +6,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">SENARAI USERS</div>
 
                 <div class="card-body">
 
-
-<a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
+<p>
+	<a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
+</p>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-dark">

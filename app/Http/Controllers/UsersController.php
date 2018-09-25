@@ -27,9 +27,26 @@ class UsersController extends Controller
         return view('users.template_create');
     }
 
-    public function store() {
+    public function store(Request $request) {
+      // $this->validate($request, [
+      //   'nama' => 'required|min:3'
+      // ]);
+
+      $request->validate([
+        'nama' => 'required|min:3',
+        'email' => 'required|email',
+        'password' => 'required|confirmed|min:3'
+      ]);
+
         # Dapatkan data dari borang template_create menerusi method POST
-        return 'Rekod berjaya ditambah!';
+        # $data = $request->all();
+        # $data = $request->input('nama');
+        # $data = $request->only('nama', 'password');
+        $data = $request->except('nama');
+
+        return $data;
+
+        # return 'Rekod berjaya ditambah!';
     }
 
     public function edit($id) {

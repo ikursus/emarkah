@@ -10,10 +10,20 @@
 
                 <div class="card-body">
 
+                  @include('layouts.alerts')
+
 <form method="POST">
+
+  @csrf
+
+  {{ csrf_field() }}
+
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
     <div class="form-group">
         <label>NAMA</label>
         <input type="text" name="nama" class="form-control">
+        {!! $errors->first('nama', '<span style="color:red">:message</span>') !!}
     </div>
 
     <div class="form-group">
@@ -24,6 +34,11 @@
     <div class="form-group">
         <label>PASSWORD</label>
         <input type="password" name="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>PASSWORD CONFIRMATION</label>
+        <input type="password" name="password_confirmation" class="form-control">
     </div>
 
     <div class="form-group">
