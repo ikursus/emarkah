@@ -46,18 +46,21 @@ class UsersController extends Controller
       $request->validate([
         'nama' => 'required|min:3',
         'email' => 'required|email',
-        'password' => 'required|confirmed|min:3'
+        'password' => 'required|confirmed|min:3',
+        'gambar' => 'mimetypes:jpeg,png,bmp,jpg,gif'
       ]);
 
         # Dapatkan data dari borang template_create menerusi method POST
         # $data = $request->all();
         # $data = $request->input('nama');
         # $data = $request->only('nama', 'password');
-        $data = $request->except('nama');
-
-        return $data;
-
-        # return 'Rekod berjaya ditambah!';
+        $data = $request->only('nama','email', 'phone', 'alamat', 'role', 'tarikh_lahir');
+        # Tambah array $data password yang telah diencrypt
+        $data['password'] = bcrypt( $request->input('password') );
+        # Simpan data ke dalam database
+        DB::table('users')->insert($data);
+        # Beri respon redirect ke senarai halaman users
+        return redirect()->route('users.index')->with('alert-success', 'Rekod berjaya ditambah!');
     }
 
     public function edit($id) {
