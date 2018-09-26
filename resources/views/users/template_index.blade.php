@@ -10,6 +10,7 @@
 
                 <div class="card-body">
 
+@include('layouts/alerts')
 <p>
 	<a href="{{ route('users.create') }}" class="btn btn-primary">Tambah User</a>
 </p>
