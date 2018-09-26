@@ -22,13 +22,13 @@
 
     <div class="form-group">
         <label>NAMA</label>
-        <input type="text" name="nama" class="form-control">
+        <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
         {!! $errors->first('nama', '<span style="color:red">:message</span>') !!}
     </div>
 
     <div class="form-group">
         <label>EMAIL</label>
-        <input type="email" name="email" class="form-control">
+        <input type="email" name="email" class="form-control" value="{{ old('email') }}">
     </div>
 
     <div class="form-group">
@@ -43,19 +43,19 @@
 
     <div class="form-group">
         <label>PHONE</label>
-        <input type="text" name="phone" class="form-control">
+        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
         {!! $errors->first('phone', '<span style="color:red">:message</span>') !!}
     </div>
 
     <div class="form-group">
         <label>TARIKH LAHIR</label>
-        <input type="date" name="tarikh_lahir" class="form-control">
+        <input type="date" name="tarikh_lahir" class="form-control" value="{{ old('tarikh_lahir') }}">
         {!! $errors->first('tarikh_lahir', '<span style="color:red">:message</span>') !!}
     </div>
 
     <div class="form-group">
         <label>ALAMAT</label>
-        <textarea name="alamat" class="form-control"></textarea>
+        <textarea name="alamat" class="form-control">{{ old('alamat') }}</textarea>
         {!! $errors->first('alamat', '<span style="color:red">:message</span>') !!}
     </div>
 
