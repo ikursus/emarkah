@@ -22,6 +22,21 @@
         {!! $errors->first('nama', '<span style="color:red">:message</span>') !!}
     </div>
 
+    <div class="form-group">
+        <label>STATUS</label>
+        <select name="status" class="form-control">
+          <option value="BUKA">BUKA</option>
+          <option value="PENUH">PENUH</option>
+        </select>
+        {!! $errors->first('status', '<span style="color:red">:message</span>') !!}
+    </div>
+
+    <div class="form-group">
+        <label>CREDIT</label>
+        <input type="text" name="credit" class="form-control">
+        {!! $errors->first('credit', '<span style="color:red">:message</span>') !!}
+    </div>
+
     <div>
         <button type="submit" class="btn btn-primary">SAVE</button>
     </div>

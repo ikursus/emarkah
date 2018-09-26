@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kursus;
 
 class KursusController extends Controller
 {
@@ -13,11 +14,8 @@ class KursusController extends Controller
      */
     public function index()
     {
-      $query = [
-          ['id' => 1, 'nama' => 'PHP Framework Laravel'],
-          ['id' => 2, 'nama' => 'Adobe Photoshop'],
-          ['id' => 3, 'nama' => 'Web Joomla'],
-      ];
+      # Dapatkan SEMUA rekod dari table kursus
+      $query = Kursus::all();
 
       # Beri respon paparkan template_index.php dari folder resources/views/users
       return view('kursus.template_index', compact('query'));
@@ -43,14 +41,15 @@ class KursusController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'nama' => 'required|min:3'
+        'nama' => 'required|min:3',
+        'credit' => 'required|integer',
       ]);
-
-        $data = $request->all();
-
-        return $data;
-
-        # return 'Rekod berjaya ditambah!';
+      # Dapatkan semua data daripada borang
+      $data = $request->all();
+      # Simpan data ke dalam table kursus
+      Kursus::create($data);
+      # return redirect
+      return redirect()->route('kursus.index')->with('alert-success', 'Rekod berjaya ditambah');
     }
 
     /**
