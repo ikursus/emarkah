@@ -62,9 +62,9 @@
     <div class="form-group">
         <label>ROLE</label>
         <select name="role" class="form-control">
-            <option value="admin">ADMIN</option>
-            <option value="staff">STAFF</option>
-            <option value="student">STUDENT</option>
+            <option value="admin"{{ old('role') == 'admin' ? 'selected="selected"' : '' }}>ADMIN</option>
+            <option value="staff"{{ old('role') == 'staff' ? 'selected="selected"' : '' }}>STAFF</option>
+            <option value="student"{{ old('role') == 'student' ? 'selected="selected"' : '' }}>STUDENT</option>
         </select>
     </div>
 

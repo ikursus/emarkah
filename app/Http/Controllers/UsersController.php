@@ -25,7 +25,7 @@ class UsersController extends Controller
 
         $data_users = DB::table('users')
         ->select('id', 'nama', 'email', 'role')
-        ->paginate(2);
+        ->paginate(10);
 
         $page_title = '<h1>Senarai Users</h1>';
 
@@ -63,9 +63,13 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('alert-success', 'Rekod berjaya ditambah!');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
+        # Dapatkan rekod user berdasarkan ID
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        // $user = DB::table('users')->whereId($id)->first();
         # Beri respon paparkan template_edit.php dari folder resources/views/users
-        return view('users.template_edit');
+        return view('users.template_edit', compact('user') );
     }
 
     public function update($id) {
