@@ -20,20 +20,25 @@
         <th>ID</th>
         <th>NAMA</th>
         <th>EMAIL</th>
+        <th>ROLE</th>
         <th>TINDAKAN</th>
         </tr>
     </thead>
 <tbody>
         @foreach($data_users as $user)
         <tr>
-        <th>{{ $user['id'] }}</th>
-        <th>{{ $user['nama'] }}</th>
-        <th>{{ $user['email'] }}</th>
-        <th><a href="{{ route('users.edit', $user['id']) }}" class="btn btn-sm btn-info">Edit</a></th>
+        <td>{{ $user->id }}</td>
+        <td>{{ $user->nama }}</td>
+        <td>{{ $user->email }}</td>
+        <td>{{ $user->role }}</td>
+        <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info">Edit</a></td>
         </tr>
         @endforeach
 </tbody>
 </table>
+
+{{ $data_users->links() }}
+{{ $data_users->render() }}
 
 </div>
 </div>

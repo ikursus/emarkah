@@ -42,12 +42,36 @@
     </div>
 
     <div class="form-group">
+        <label>PHONE</label>
+        <input type="text" name="phone" class="form-control">
+        {!! $errors->first('phone', '<span style="color:red">:message</span>') !!}
+    </div>
+
+    <div class="form-group">
+        <label>TARIKH LAHIR</label>
+        <input type="date" name="tarikh_lahir" class="form-control">
+        {!! $errors->first('tarikh_lahir', '<span style="color:red">:message</span>') !!}
+    </div>
+
+    <div class="form-group">
+        <label>ALAMAT</label>
+        <textarea name="alamat" class="form-control"></textarea>
+        {!! $errors->first('alamat', '<span style="color:red">:message</span>') !!}
+    </div>
+
+    <div class="form-group">
         <label>ROLE</label>
         <select name="role" class="form-control">
             <option value="admin">ADMIN</option>
             <option value="staff">STAFF</option>
             <option value="student">STUDENT</option>
         </select>
+    </div>
+
+    <div class="form-group">
+        <label>GAMBAR</label>
+        <input type="file" name="gambar">
+        {!! $errors->first('gambar', '<span style="color:red">:message</span>') !!}
     </div>
 
     <div>
