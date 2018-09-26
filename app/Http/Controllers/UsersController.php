@@ -46,7 +46,7 @@ class UsersController extends Controller
 
       $request->validate([
         'nama' => 'required|min:3',
-        'email' => 'required|email',
+        'email' => 'required|email|unique:users,email',
         'password' => 'required|confirmed|min:3',
         'gambar' => 'mimetypes:jpeg,png,bmp,jpg,gif'
       ]);
@@ -77,7 +77,7 @@ class UsersController extends Controller
     {
         $request->validate([
           'nama' => 'required|min:3',
-          'email' => 'required|email',
+          'email' => 'required|email|unique:users,email,'.$id,
           'gambar' => 'mimetypes:jpeg,png,bmp,jpg,gif'
         ]);
 

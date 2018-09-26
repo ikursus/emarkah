@@ -52,3 +52,5 @@ Route::get('kursus/{id}/edit', 'KursusController@edit')->name('kursus.edit');
 Route::patch('kursus/{id}/edit', 'KursusController@update')->name('kursus.update');
 # Route untuk tambah maklumat kursus
 Route::delete('kursus/{id}', 'KursusController@destroy')->name('kursus.destroy');
+
+Route::resource('markah', 'UserMarkahController');
