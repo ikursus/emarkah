@@ -12,7 +12,7 @@
 
                   @include('layouts.alerts')
 
-<form method="POST"  enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
 
   @csrf
 
