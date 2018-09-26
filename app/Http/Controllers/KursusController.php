@@ -71,8 +71,10 @@ class KursusController extends Controller
      */
     public function edit($id)
     {
+      # $kursus = Kursus::where('id', '=', $id)->first();
+      $kursus = Kursus::find($id);
       # Beri respon paparkan template_edit.php dari folder resources/views/users
-      return view('kursus.template_edit');
+      return view('kursus.template_edit', compact('kursus'));
     }
 
     /**
@@ -85,11 +87,15 @@ class KursusController extends Controller
     public function update(Request $request, $id)
     {
       $request->validate([
-        'nama' => 'required|min:3'
+        'nama' => 'required|min:3',
+        'credit' => 'required|integer',
       ]);
-
-        $data = $request->all();
-
+      # Dapatkan semua data daripada borang
+      $data = $request->all();
+      # Simpan data ke dalam table kursus
+      $kursus = Kursus::find($id);
+      $kursus->update($data);
+      # return redirect
         return redirect()->back()->with('alert-success', 'Rekod berjaya dikemaskini');
     }
 
@@ -101,6 +107,9 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
+        $kursus = Kursus::find($id);
+        $kursus->delete();
+        
         return redirect()->route('kursus.index')->with('alert-success', 'Rekod berjaya dihapuskan');
     }
 }

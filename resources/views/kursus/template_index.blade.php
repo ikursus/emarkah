@@ -21,6 +21,8 @@
         <tr>
         <th>ID</th>
         <th>NAMA</th>
+        <th>STATUS</th>
+        <th>KREDIT</th>
         <th>TINDAKAN</th>
         </tr>
     </thead>
@@ -29,6 +31,8 @@
         <tr>
         <td>{{ $item['id'] }}</td>
         <td>{{ $item['nama'] }}</td>
+        <td>{{ $item['status'] }}</td>
+        <td>{{ $item['credit'] }}</td>
         <td>
           <a href="{{ route('kursus.edit', $item['id']) }}" class="btn btn-sm btn-info">Edit</a>
 
