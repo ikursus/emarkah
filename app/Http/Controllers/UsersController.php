@@ -72,13 +72,30 @@ class UsersController extends Controller
         return view('users.template_edit', compact('user') );
     }
 
-    public function update($id) {
-        # Dapatkan data dari borang template_edit menerusi method PATCH
-        return 'Rekod berjaya dikemaskini';
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+          'nama' => 'required|min:3',
+          'email' => 'required|email',
+          'gambar' => 'mimetypes:jpeg,png,bmp,jpg,gif'
+        ]);
+
+        $data = $request->only('nama','email', 'phone', 'alamat', 'role', 'tarikh_lahir');
+        # Jika password diisi (tidak kosong), baru update ke dalam table
+        if ( !empty($request->input('password') ))
+        {
+          # Tambah array $data password yang telah diencrypt
+          $data['password'] = bcrypt( $request->input('password') );
+        }
+        # Simpan data ke dalam database
+        DB::table('users')->where('id', '=', $id)->update($data);
+        # Beri respon redirect ke senarai halaman users
+        return redirect()->back()->with('alert-success', 'Rekod berjaya dikemaskini!');
     }
 
     public function destroy($id) {
         # Hapuskan rekod dari database
+        DB::table('users')->where('id', '=', $id)->delete();
         return 'Rekod berjaya dihapuskan!';
     }
 }
