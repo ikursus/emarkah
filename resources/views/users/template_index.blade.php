@@ -33,6 +33,10 @@
         <td>{{ $user->email }}</td>
         <td>{{ $user->role }}</td>
         <td>
+          @if ( $user->role == 'student')
+          <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">Detail</a>
+          @endif
+          
             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info">Edit</a>
 
             <!-- Button trigger modal -->
@@ -68,7 +72,7 @@
               </div>
             </div>
             </form>
-            
+
         </td>
         </tr>
         @endforeach

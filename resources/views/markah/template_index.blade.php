@@ -6,14 +6,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">SENARAI MARKAH</div>
+                <div class="card-header">SENARAI markah</div>
 
                 <div class="card-body">
 
                   @include('layouts.alerts')
 
 <p>
-	<a href="{{ route('markah.create') }}" class="btn btn-primary">Tambah Markah</a>
+	<a href="{{ route('markah.create') }}" class="btn btn-primary">Tambah markah</a>
 </p>
 
 <table class="table table-bordered table-striped">
@@ -22,7 +22,7 @@
         <th>ID</th>
         <th>STUDENT</th>
         <th>KURSUS</th>
-        <th>MARKAH</th>
+        <th>markah</th>
         <th>GRED</th>
         <th>MATA NILAI</th>
         <th>TINDAKAN</th>

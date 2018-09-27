@@ -14,6 +14,7 @@ class UserMarkah extends Model
       'mata_nilai'
     ];
 
+    # Relationship di antara table user_markahs dan table user
     public function user()
     {
       return $this->belongsTo(User::class);

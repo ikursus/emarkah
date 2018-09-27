@@ -69,8 +69,7 @@ class UserMarkahController extends Controller
      */
     public function edit(UserMarkah $markah)
     {
-        $query = $markah;
-        return view('markah.template_edit', compact('query'));
+        return view('markah.template_edit', compact('markah'));
     }
 
     /**

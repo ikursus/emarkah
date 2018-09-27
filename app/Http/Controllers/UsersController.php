@@ -100,4 +100,16 @@ class UsersController extends Controller
 
         return redirect()->route('users.index')->with('alert-success', 'Rekod berjaya dihapuskan!');
     }
+
+    public function show($id)
+    {
+      $rekod = DB::table('users')->join('user_markahs', 'users.id', '=', 'user_markahs.user_id')
+      ->join('kursus', 'user_markahs.kursus_id', '=', 'kursus.id')
+      ->where('users.id', '=', $id)
+      ->select('users.*', 'user_markahs.markah', 'user_markahs.gred as gred_student', 'kursus.nama as nama_kursus')
+      ->get();
+
+      return view('users/template_show', compact('rekod') );
+
+    }
 }
