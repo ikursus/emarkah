@@ -22,12 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group( function () {
 
-  Route::get('dashboard', function () {
-      # Bagi respon paparkan template_dashboard.php dari folder resources/views/user
-      # return view('user.template_dashboard');
-      return view('user/template_dashboard');
-  });
-
   // Route::middleware('role:admin|staff')->group( function () {
   //
   // });

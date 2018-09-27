@@ -16,7 +16,8 @@ class KursusController extends Controller
     public function index()
     {
       # Beri respon paparkan template_index.php dari folder resources/views/users
-      return view('kursus.template_index');
+      # return view('kursus.template_index');
+      return view('themes.'.config('emarkah.theme').'.kursus.template_index');
     }
 
     /**
