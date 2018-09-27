@@ -10,6 +10,10 @@
 
                 <div class="card-body">
 
+                  @if ( !is_null($user->gambar) && !empty($user->gambar))
+                  <img src="/uploads/{{ $user->gambar }}">
+                  @endif
+
                   @include('layouts.alerts')
 
 <form method="POST" enctype="multipart/form-data">

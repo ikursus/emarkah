@@ -47,8 +47,7 @@ class UsersController extends Controller
       $request->validate([
         'nama' => 'required|min:3',
         'email' => 'required|email|unique:users,email',
-        'password' => 'required|confirmed|min:3',
-        'gambar' => 'mimetypes:jpeg,png,bmp,jpg,gif'
+        'password' => 'required|confirmed|min:3'
       ]);
 
         # Dapatkan data dari borang template_create menerusi method POST
@@ -58,6 +57,22 @@ class UsersController extends Controller
         $data = $request->only('nama','email', 'phone', 'alamat', 'role', 'tarikh_lahir');
         # Tambah array $data password yang telah diencrypt
         $data['password'] = bcrypt( $request->input('password') );
+
+        // Buat semakan adakah wujud fail gambar
+        if( $request->hasFile('gambar') )
+        {
+          // Dapatkan maklumat fail gambar
+          $gambar = $request->file('gambar');
+          // Dapatkan NAMA fail gambar tersebut
+          $nama_gambar = $gambar->getClientOriginalName();
+          // Berikan nama baru fail gambar dengan adanya timestamp
+          $nama_baru = date('Y-m-dH-i-S').'-'.$nama_gambar;
+          // Upload gambar ke folder simpanan gambar bernama uploads yang berada di dalam public
+          $gambar->move('uploads', $nama_baru);
+          // Masukkan maklumat nama gambar ke array $data
+          $data['gambar'] = $nama_baru;
+        }
+
         # Simpan data ke dalam database
         DB::table('users')->insert($data);
         # Beri respon redirect ke senarai halaman users
