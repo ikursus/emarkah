@@ -27,18 +27,19 @@ Route::get('dashboard', function () {
 });
 
 # Route untuk paparkan senarai users
-Route::get('users', 'UsersController@index')->name('users.index');
-# Route untuk tambah maklumat user
-Route::get('users/add', 'UsersController@create')->name('users.create');
-# Route untuk tambah maklumat user
-Route::post('users/add', 'UsersController@store')->name('users.store');
-# Route untuk tambah maklumat user
-Route::get('users/{id}/edit', 'UsersController@edit')->name('users.edit');
-# Route untuk tambah maklumat user
-Route::patch('users/{id}/edit', 'UsersController@update')->name('users.update');
-# Route untuk tambah maklumat user
-Route::delete('users/{id}', 'UsersController@destroy')->name('users.destroy');
-
+// Route::get('users', 'UsersController@index')->name('users.index');
+// # Route untuk tambah maklumat user
+// Route::get('users/add', 'UsersController@create')->name('users.create');
+// # Route untuk tambah maklumat user
+// Route::post('users/add', 'UsersController@store')->name('users.store');
+// # Route untuk tambah maklumat user
+// Route::get('users/{id}/edit', 'UsersController@edit')->name('users.edit');
+// # Route untuk tambah maklumat user
+// Route::patch('users/{id}/edit', 'UsersController@update')->name('users.update');
+// # Route untuk tambah maklumat user
+// Route::delete('users/{id}', 'UsersController@destroy')->name('users.destroy');
+# Route::get('markah/test', 'UserMarkahController@percubaan');
+Route::resource('users', 'UsersController');
 
 # Route untuk paparkan senarai kursus
 Route::get('kursus', 'KursusController@index')->name('kursus.index');
@@ -53,4 +54,8 @@ Route::patch('kursus/{id}/edit', 'KursusController@update')->name('kursus.update
 # Route untuk tambah maklumat kursus
 Route::delete('kursus/{id}', 'KursusController@destroy')->name('kursus.destroy');
 
-Route::resource('markah', 'UserMarkahController');
+
+
+# Route::get('markah/test', 'UserMarkahController@percubaan');
+Route::resource('markah', 'UserMarkahController')->except(['show']);
+Route::resource('user-kursus', 'UserKursusController');

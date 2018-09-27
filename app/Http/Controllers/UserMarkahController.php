@@ -53,24 +53,23 @@ class UserMarkahController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserMarkah  $userMarkah
+     * @param  \App\UserMarkah  $markah
      * @return \Illuminate\Http\Response
      */
-    public function show(UserMarkah $userMarkah)
+    public function show(UserMarkah $markah)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserMarkah  $userMarkah
+     * @param  \App\UserMarkah  $markah
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserMarkah $userMarkah)
+    public function edit(UserMarkah $markah)
     {
-        $query = UserMarkah::find($id);
-
+        $query = $markah;
         return view('markah.template_edit', compact('query'));
     }
 
@@ -78,23 +77,28 @@ class UserMarkahController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserMarkah  $userMarkah
+     * @param  \App\UserMarkah  $markah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserMarkah $userMarkah)
+    public function update(Request $request, UserMarkah $markah)
     {
-        //
+      $data = $request->all();
+
+      $query = $markah;
+      $query->update($data);
+
+      return redirect()->route('markah.index')->with('alert-success', 'Rekod berjaya dikemaskini!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserMarkah  $userMarkah
+     * @param  \App\UserMarkah  $markah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserMarkah $userMarkah)
+    public function destroy(UserMarkah $markah)
     {
-        $query = UserMarkah::find($id);
+        $query = $markah;
         $query->delete();
 
         return redirect()->route('markah.index')->with('alert-success', 'Rekod berjaya dihapuskan!');

@@ -13,4 +13,14 @@ class UserMarkah extends Model
       'gred',
       'mata_nilai'
     ];
+
+    public function user()
+    {
+      return $this->belongsTo(User::class);
+    }
+
+    public function kursus()
+    {
+      return $this->belongsTo(Kursus::class);
+    }
 }

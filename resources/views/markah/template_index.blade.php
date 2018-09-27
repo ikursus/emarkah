@@ -32,8 +32,8 @@
         @foreach($query as $item)
         <tr>
         <td>{{ $item['id'] }}</td>
-        <td>{{ $item['user_id'] }}</td>
-        <td>{{ $item['kursus_id'] }}</td>
+        <td>{{ $item->user->nama }}</td>
+        <td>{{ $item->kursus->nama }}</td>
         <td>{{ $item['markah'] }}</td>
         <td>{{ $item['gred'] }}</td>
         <td>{{ $item['mata_nilai'] }}</td>
