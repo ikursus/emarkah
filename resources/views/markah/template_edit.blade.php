@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Kemaskini UserMarkah') }}</div>
+                <div class="card-header">{{ __('Kemaskini Markah') }}</div>
 
                 <div class="card-body">
 
@@ -31,7 +31,7 @@
   </div>
 
   <div class="form-group">
-      <label>UserMarkah</label>
+      <label>Markah</label>
       <input type="text" name="markah" class="form-control" value="{{ $markah->markah }}">
       {!! $errors->first('markah', '<span style="color:red">:message</span>') !!}
   </div>

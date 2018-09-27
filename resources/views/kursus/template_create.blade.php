@@ -12,35 +12,11 @@
 
                   @include('layouts.alerts')
 
-<form method="POST">
+{!! Form::open(['route' => 'kursus.store']) !!}
 
-  @csrf
+    @include('kursus/template_form')
 
-    <div class="form-group">
-        <label>NAMA</label>
-        <input type="text" name="nama" class="form-control">
-        {!! $errors->first('nama', '<span style="color:red">:message</span>') !!}
-    </div>
-
-    <div class="form-group">
-        <label>STATUS</label>
-        <select name="status" class="form-control">
-          <option value="BUKA">BUKA</option>
-          <option value="PENUH">PENUH</option>
-        </select>
-        {!! $errors->first('status', '<span style="color:red">:message</span>') !!}
-    </div>
-
-    <div class="form-group">
-        <label>CREDIT</label>
-        <input type="text" name="credit" class="form-control">
-        {!! $errors->first('credit', '<span style="color:red">:message</span>') !!}
-    </div>
-
-    <div>
-        <button type="submit" class="btn btn-primary">SAVE</button>
-    </div>
-</form>
+{!! Form::close() !!}
 
 </tbody>
 </table>

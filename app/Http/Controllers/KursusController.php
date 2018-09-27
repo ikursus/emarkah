@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kursus;
+use DataTables;
 
 class KursusController extends Controller
 {
@@ -14,12 +15,28 @@ class KursusController extends Controller
      */
     public function index()
     {
-      # Dapatkan SEMUA rekod dari table kursus
-      $query = Kursus::all();
-
       # Beri respon paparkan template_index.php dari folder resources/views/users
-      return view('kursus.template_index', compact('query'));
+      return view('kursus.template_index');
     }
+
+    /**
+   * Process datatables ajax request.
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+    public function datatables()
+    {
+        # Dapatkan SEMUA rekod dari table kursus
+        $query = Kursus::select('id', 'nama','status', 'credit');
+
+        return DataTables::of($query)
+        ->addColumn('tindakan', function ($item) {
+          return view('kursus/template_tindakan', compact('item'));
+        })
+        ->rawColumns(['tindakan'])
+        ->make(true);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -109,7 +126,7 @@ class KursusController extends Controller
     {
         $kursus = Kursus::find($id);
         $kursus->delete();
-        
+
         return redirect()->route('kursus.index')->with('alert-success', 'Rekod berjaya dihapuskan');
     }
 }
